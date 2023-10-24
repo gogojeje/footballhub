@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Football Hub®</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Sign Up for Football Hub®</h1>
+        <br><br>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <form action="/api/signup" method="POST">
+                    <input type="text" class="form-control mb-2" name="userid" placeholder="ID">
+                    <input type="text" class="form-control mb-2" name="username" placeholder="Nickname">
+                    <input type="email" class="form-control mb-2" name="email" placeholder="Email">
+                    <input type="password" class="form-control mb-2" name="password" placeholder="Password">
+                    <select class="form-control mb-2" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="number" class="form-control mb-2" name="age" placeholder="Age">
+                    <input type="text" class="form-control mb-2" name="location" placeholder="Location">
+                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

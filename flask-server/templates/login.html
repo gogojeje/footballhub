@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Football Hub®</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Login to Football Hub®</h1>
+        <br><br>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <form action="/api/login" method="POST">
+                    <input type="text" class="form-control mb-2" name="userid" placeholder="ID">
+                    <input type="password" class="form-control mb-2" name="password" placeholder="Password">
+                    <button class="btn btn-primary btn-block" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

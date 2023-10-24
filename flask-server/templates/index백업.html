@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Hub®</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to Football Hub® <br>
+            이 페이지는 테스트용 페이지입니다. 실제 결과물은 <br> npm run dev로 실행하셔야합니다.</h1>
+        <br><br>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <!-- 로그인 폼 -->
+                    {% if "userid" in session %}
+                        <p>Welcome, {{ session["userid"] }}!</p>
+                        <a href="/api/logout" class="btn btn-danger">Logout</a>
+                    {% else %}
+                        <form id="login-form">
+                            <input type="text" class="form-control mb-2" name="userid" placeholder="ID">
+                            <input type="password" class="form-control mb-2" name="password" placeholder="Password">
+                            <button class="btn btn-primary btn-block" type="submit">Login</button>
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex justify-content-between">
+                        <a href="/api/signup" class="btn btn-primary">Sign Up</a>
+                        <button id="view-schedule" class="btn btn-primary">View Schedule</button>
+                        {% if "userid" in session %}
+                            <button id="set-favorite-team" class="btn btn-primary" data-toggle="modal" data-target="#set-favortie-team-modal">Set Favorite Team</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" id="schedule-container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Round</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>League or Tournament</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Streaming</th>
+                </tr>
+            </thead>
+            <tbody id="schedule-body">
+                <!-- 데이터는 JavaScript를 통해 동적으로 채워짐 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Set Favorite Team Modal -->
+    <div class="modal fade" id="set-favortie-team-modal" tabindex="-1" role="dialog" aria-labelledby="set-favorite-team-modal-title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="set-favorite-team-modal-title">Set Favorite Team</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="favorite-team-form">
+                        <div class="form-group">
+                            <label for="favorite-team-select">Select a Team:</label>
+                            <select class="form-control" id="favorite-team-select" name="favorite-team-select">
+                                <option value="">Select a team</option>
+                                {% for team in teamData %}
+                                    <option value="{{ team.name }}">{{ team.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="set-favorite-button">Set Favorite Team</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function() {
+        $('#view-schedule').click(function() {
+            loadScheduleData();
+        });
+    
+        $('#set-favorite-team').click(function() {
+            loadTeamNames();
+        });
+
+
+
+
+
+
+        $('#set-favorite-button').click(function() {
+            event.preventDefault(); // 폼 기본 제출 동작 방지
+            var selectedTeam = $('#favorite-team-select').val(); // 선택한 팀 가져오기
+            if (selectedTeam) {
+                setFavoriteTeam(selectedTeam); // 추가: 선택한 팀 데이터 전송 함수 호출
+            } else {
+                alert("Please select a team.");
+            }
+        });
+
+
+
+
+
+        $('#login-form').submit(function(event) {
+            event.preventDefault(); // 폼 기본 제출 동작 방지
+        
+            var userid = $('input[name="userid"]').val();
+            var password = $('input[name="password"]').val();
+            var requestData = {
+                userid: userid,
+                password: password
+            };
+        
+            $.ajax({
+                type: "POST",
+                url: "/api/login",
+                contentType: "application/json", // JSON 데이터로 전송
+                data: JSON.stringify(requestData), // 데이터를 JSON 문자열로 변환
+                success: function(response) {
+                    alert(response); // 서버에서의 응답 메시지 표시
+                    // ...
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error logging in:", error);
+                    alert("An error occurred while logging in.");
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function loadTeamNames() {
+            $.get('/api/teams/names', function(response) {
+                var teamSelect = $('#favorite-team-select');
+                teamSelect.empty(); // Clear existing options
+                teamSelect.append('<option value="">Select a team</option>'); // Add the placeholder option
+        
+                // Populate the dropdown options with team names
+                response.data.forEach(function(team) {
+                    teamSelect.append('<option value="' + team.name + '">' + team.name + '</option>');
+                });
+            });
+        }
+
+
+
+        
+            
+
+        function loadScheduleData() {
+            $.get('/api/schedule', function(response) {
+                var scheduleTable = '';
+                response.data.forEach(function(match) {
+                    var streamingButton = '<button class="btn btn-secondary streaming-button" data-schedule-number="' + match.roundnumber + '">View Streaming</button>';
+        
+                    scheduleTable += '<tr>' +
+                        '<td>' + match.roundnumber + '</td>' +
+                        '<td>' + match.Date + '</td>' +
+                        '<td>' + match.time + '</td>' +
+                        '<td>' + match.leagueortournament + '</td>' +
+                        '<td>' + match.hometeam + '</td>' +
+                        '<td>' + match.awayteam + '</td>' +
+                        '<td>' + streamingButton + '</td>' +
+                        '</tr>';
+                });
+        
+                $('#schedule-body').html(scheduleTable);
+        
+                // Set up event handler for streaming button
+                $('.streaming-button').click(function() {
+                    var scheduleNumber = $(this).data('schedule-number');
+                    loadStreamingData(scheduleNumber);
+                });
+            });
+        }
+
+
+
+        function loadStreamingData(scheduleNumber) {
+            $.get('/api/streaming/' + scheduleNumber, function(response) {
+                var streamingList = '';
+                response.data.forEach(function(stream) {
+                    streamingList += '<p>' + stream.site + ': <a href="' + stream.address + '" target="_blank">' + stream.address + '</a></p>';
+                });
+        
+                $('#streaming-modal-title').text('Streaming Info for Round ' + scheduleNumber);
+                $('#streaming-modal-body').html(streamingList);
+                $('#streaming-modal').modal('show');
+            });
+        }
+    });
+</script>
+</body>
+</html>
