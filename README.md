@@ -5,10 +5,10 @@
  4) 기타         : ChatGPT 3.5 적극 활용 
   
 2. 주요 특징 및 차별성
-주요 축구경기 일정을 간편하게 확인하고, 각 경기의 중계 사이트를 연결해주는 올바른 축구중계 플랫폼
+- 주요 축구경기 일정을 간편하게 확인하고, 각 경기의 중계 사이트를 연결해주는 올바른 축구중계 플랫폼
 
 3. 사용한 주요 기술
-Oracle / Flask SSR / Flask REST / Bootstrap / jQuery / AJAX / CSS / Vue.js / Vue Router 등
+- Oracle / Flask SSR / Flask REST / Bootstrap / jQuery / AJAX / CSS / Vue.js / Vue Router 등
 
 
 4. Table 작업
