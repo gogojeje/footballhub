@@ -1,31 +1,6 @@
-1.프로젝트 개요
-- 프로젝트명: 풋볼허브(축구 중계 사이트 플랫폼)
-- 프로젝트기간: 2023년 8월 16일 ~ 25일(10일 간)
-- 디벨로퍼명: 정용준
-- 기타: ChatGPT 3.5 적극 활용 
-
-  
-2. 주요 특징 및 차별성
-- 주요 축구경기 일정을 간편하게 확인하고, 각 경기의 중계 사이트를 연결해주는 올바른 축구중계 플랫폼
-
-
-3. 사용한 주요 기술
-- Oracle / Flask SSR / Flask REST / Bootstrap / jQuery / AJAX / CSS / Vue.js / Vue Router 등
-
-
-4. Table 작업
-- 6개 테이블 생성
-(LEAGUESANDTOURNAMENTS, TEAMS, MATCHSCHEDULE, MATCHSTREAMING, MEMBERS, PREFERREDTEAMS)
-
-
-5. PL/SQL 작업
-- 각 테이블에 CRUD를 수행하는 PLSQL 패키지 생성, 컬럼별로 UPDATE하는 프로시저 및 패키지 테스트용 PLSQL 코드 포함
-
-  
-6. Flask 작업
-- 각 기능별 api를 제작하여 구성
-- 기능별로 모듈화하여 여러 개의 .py 파일 작성
-
-
-7. Vue 작업
-- Axios, CORS 사용하여 백엔드와 연동
+1. 프로젝트명: 풋볼허브(축구 경기 일정들을 표시하고 각 중계 사이트들로 연결해주는 플랫폼)
+2. 프로젝트 기간: 2023년 8월 16일 ~ 25일(10일 간)
+3. 참여자: 한국소프트웨어산업협회 AI융합 개발자 교육과정 4팀(팀장: 황흥기 / 팀원: 이예희, 정용준, 황성하 - DB 구축까지만 같이 하고 개인별로 개발)
+4. 담당업무 및 내용: 전체 개발 담당(회원가입, 로그인, 경기 일정 표시, 마이팀 설정, 중계 사이트 팝업창 띄우기 기능 구현)
+5. 사용기술: Oracle SQL, Python, Flask, Vue.js, Bootstrap, jQuery, AJAX 등
+6. 기타: 교육과정 1차 프로젝트(생애 첫 개발 앱)
