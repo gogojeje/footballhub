@@ -7,10 +7,10 @@
 7. 앱 스크린샷: https://blog.naver.com/gojejes/223245425367
 8. 참고:
 
-● Do it! 프런트엔드 UI 개발 with Vue.js(김윤미) - http://www.easyspub.co.kr/20_Menu/BookView/605/PUB
+● 초보자를 위한 SQL 200제(PL/SQL)(유연수) - http://infopub.co.kr/new/include/detail.asp?sku=07000078
 
 ● 점프 투 파이썬(박응용) - https://wikidocs.net/book/1
 
-● 초보자를 위한 SQL 200제(PL/SQL)(유연수) - http://infopub.co.kr/new/include/detail.asp?sku=07000078
+● Do it! 프런트엔드 UI 개발 with Vue.js(김윤미) - http://www.easyspub.co.kr/20_Menu/BookView/605/PUB
 
 ● ChatGPT(OpenAI) - https://chat.openai.com/
