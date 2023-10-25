@@ -4,3 +4,4 @@
 4. 담당업무 및 내용: 전체 개발 담당(회원가입, 로그인, 경기 일정 표시, 마이팀 설정, 중계 사이트 팝업창 띄우기 기능 구현)
 5. 사용기술: Oracle SQL, Python, Flask, Vue.js, Bootstrap, jQuery, AJAX 등
 6. 기타: 교육과정 1차 프로젝트(생애 첫 개발 앱)
+7. 앱 스크린샷: https://blog.naver.com/gojejes/223245425367
