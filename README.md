@@ -6,6 +6,7 @@
 6. 기타: 교육과정 1차 프로젝트(생애 첫 개발 앱)
 7. 앱 스크린샷: https://blog.naver.com/gojejes/223245425367
 8. 참고:
+
 ● Do it! 프런트엔드 UI 개발 with Vue.js(김윤미) - http://www.easyspub.co.kr/20_Menu/BookView/605/PUB
 
 ● 점프 투 파이썬(박응용) - https://wikidocs.net/book/1
